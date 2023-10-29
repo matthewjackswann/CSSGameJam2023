@@ -32,7 +32,6 @@ public class Host : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		DontDestroyOnLoad(this);
-		// Start TcpServer background thread
 		foreach (var ipAddress in Dns.GetHostEntry(Dns.GetHostName()).AddressList)
 		{
 			if (ipAddress.AddressFamily == AddressFamily.InterNetwork)
@@ -41,7 +40,9 @@ public class Host : MonoBehaviour {
 			}
 		}
 		ipDisplay.text = myIP;
-		tcpListenerThread = new Thread (ListenForIncommingRequests)
+		// Start TcpServer background thread
+		tcpListenerThread?.Abort();
+		tcpListenerThread = new Thread(ListenForIncommingRequests)
 		{
 			IsBackground = true
 		};

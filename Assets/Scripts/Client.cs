@@ -39,6 +39,7 @@ public class Client : MonoBehaviour {
 	/// </summary>
 	private void ConnectToTcpServer() {
 		try {
+			clientReceiveThread?.Abort();
 			clientReceiveThread = new Thread(ListenForData)
 			{
 				IsBackground = true
@@ -48,6 +49,7 @@ public class Client : MonoBehaviour {
 		}
 		catch (Exception e) {
 			Debug.Log("On client connect exception " + e);
+			clientReceiveThread?.Abort();
 		}
 	}
 	/// <summary>
