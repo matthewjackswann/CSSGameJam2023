@@ -126,6 +126,7 @@ public class Contaminate : MonoBehaviour
 
     float GetProbability(Disease infector, Disease infectee)
     {
+        return 1;
         int infectorIndex = enums.IndexOf(infector);
         int infecteeIndex = enums.IndexOf(infectee);
 
