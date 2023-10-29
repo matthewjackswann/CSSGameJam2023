@@ -2,6 +2,7 @@
 // To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/
 // or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 using System;
+using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using TMPro;
@@ -12,14 +13,25 @@ public class Client : MonoBehaviour {
 	private TcpClient socketConnection;
 	private Thread clientReceiveThread;
 
-	[SerializeReference] private TextMeshProUGUI hostIPText;
+	[SerializeReference] private TMP_InputField hostIPText;
 
 	private String hostIP;
+
+	private bool pendingConnection = false;
 	// Use this for initialization
 	public void TryConnect()
 	{
 		hostIP = hostIPText.text;
 		ConnectToTcpServer();
+	}
+
+	private void Update()
+	{
+		if (!pendingConnection) return;
+		pendingConnection = false;
+		DontDestroyOnLoad(this);
+		SceneManager.LoadScene("Scenes/ClientGame", LoadSceneMode.Single);
+
 	}
 
 	/// <summary>
@@ -43,7 +55,9 @@ public class Client : MonoBehaviour {
 	/// </summary>
 	private void ListenForData() {
 		try {
-			socketConnection = new TcpClient("localhost", 8052);
+			// socketConnection = new TcpClient(IPAddress.Parse(hostIP), 8052);
+			socketConnection = new TcpClient();
+			socketConnection.Connect(IPAddress.Parse(hostIP), 8052);
 			byte[] bytes = new byte[1024];
 			while (true)
 			{
@@ -59,8 +73,7 @@ public class Client : MonoBehaviour {
 
 					if (serverMessage.type == Message.MessageType.ConnectionAck)
 					{
-						DontDestroyOnLoad(this);
-						SceneManager.LoadScene("Scenes/ClientGame", LoadSceneMode.Single);
+						pendingConnection = true;
 					}
 
 					Debug.Log("server message received as: " + serverMessage.data);

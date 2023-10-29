@@ -53,7 +53,7 @@ public class Host : MonoBehaviour {
 	private void ListenForIncommingRequests () {
 		try {
 			// Create listener on localhost port 8052.
-			tcpListener = new TcpListener(IPAddress.Parse(myIP), 8052);
+			tcpListener = new TcpListener(IPAddress.Any, 8052);
 			tcpListener.Start();
 			Debug.Log("Server is listening");
 			byte[] bytes = new byte[1024];
