@@ -27,7 +27,7 @@ public class Contaminate : MonoBehaviour
 
     void Start()
     {
-        movement = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+        movement = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
         UpdateColour();
     }
 
@@ -56,9 +56,15 @@ public class Contaminate : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D collision)
+
     {
+        Vector2 normal = collision.contacts[0].normal;
+        
+        
         // update movement vector
-        movement = new Vector2(-movement.x + Random.Range(-1f, 1f), -movement.y +Random.Range(-1f, 1f));
+        movement = new Vector2(movement.x + Random.Range(-1f, 1f), movement.y +Random.Range(-1f, 1f)).normalized;
+        Vector2 rNorm = Vector2.Reflect(movement,normal);
+        movement = rNorm;
 
         // if a person see if you can infect them
         Contaminate cont = collision.gameObject.GetComponent<Contaminate>();
