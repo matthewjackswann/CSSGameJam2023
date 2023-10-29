@@ -70,6 +70,7 @@ public class Contaminate : MonoBehaviour
                 {
                     disease = cont.disease;
                     UpdateColour();
+                    Points.Instance.AddPoints(1);
                 }
             }
             
