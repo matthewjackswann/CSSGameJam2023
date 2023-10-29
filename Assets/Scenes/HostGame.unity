@@ -2469,7 +2469,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   movement: {x: 0, y: 0}
-  disease: 0
+  disease: 1
   infectionProb: 0
   resistanceProbs: []
   infectorProbs: []
@@ -2537,7 +2537,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 947415249}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 5.02, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5606,7 +5606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   movement: {x: 0, y: 0}
-  disease: 2
+  disease: 1
   infectionProb: 0
   resistanceProbs: []
   infectorProbs: []
@@ -5674,7 +5674,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2046217897}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20, y: 0, z: -1}
+  m_LocalPosition: {x: 20, y: 2.81, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

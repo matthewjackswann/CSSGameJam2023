@@ -33,6 +33,18 @@ public class Host : MonoBehaviour {
 	[SerializeField] private GameObject person;
 	private readonly List<Message> toSpawn = new();
 
+	[SerializeField] private int red = 1;
+	[SerializeField] private int blue = 1;
+	[SerializeField] private int green = 100;
+
+	public void Infection(int r, int g, int b)
+	{
+		red += r;
+		green += g;
+		blue += b;
+		SendMessage(new Message(r, b, g));
+	}
+
 	// Use this for initialization
 	void Start () {
 		DontDestroyOnLoad(this);
@@ -107,6 +119,11 @@ public class Host : MonoBehaviour {
 								case Message.MessageType.Teleport:
 									toSpawn.Add(clientMessage);
 									Debug.Log("New person");
+									break;
+								case Message.MessageType.Infection:
+									red += clientMessage.red;
+									blue += clientMessage.blue;
+									green += clientMessage.green;
 									break;
 							}
 							Debug.Log("client message received as: " + clientMessage.data);

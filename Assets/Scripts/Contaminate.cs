@@ -24,9 +24,13 @@ public class Contaminate : MonoBehaviour
 
 
     [SerializeReference] public Rigidbody2D rb;
+    [SerializeReference] private Client _client;
+    [SerializeReference] private Host _host;
 
     void Start()
     {
+        _client = FindObjectOfType<Client>();
+        _host = FindObjectOfType<Host>();
         movement = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
         UpdateColour();
     }
@@ -59,8 +63,8 @@ public class Contaminate : MonoBehaviour
 
     {
         Vector2 normal = collision.contacts[0].normal;
-        
-        
+
+
         // update movement vector
         movement = new Vector2(movement.x + Random.Range(-1f, 1f), movement.y +Random.Range(-1f, 1f)).normalized;
         Vector2 rNorm = Vector2.Reflect(movement,normal);
@@ -85,6 +89,22 @@ public class Contaminate : MonoBehaviour
                 float probability = GetProbability(disease, cont.disease);
                 if (probability > infectionProb)
                 {
+                    if (cont.disease == disease) return;
+
+                    int r = 0;
+                    int g = 0;
+                    int b = 0;
+                    if (disease == Disease.Red) r--;
+                    if (disease == Disease.None) g--;
+                    if (disease == Disease.Blue) b--;
+
+                    if (cont.disease == Disease.Red) r++;
+                    if (cont.disease == Disease.None) g++;
+                    if (cont.disease == Disease.Blue) b++;
+                    if (_client != null)
+                        _client.Infection(r, g, b);
+                    else if (_host != null)
+                        _host.Infection(r, g, b);
                     disease = cont.disease;
                     UpdateColour();
                 }

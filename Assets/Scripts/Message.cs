@@ -12,6 +12,9 @@ public class Message
     public float movX;
     public float movY;
     public Disease d;
+    public int red;
+    public int blue;
+    public int green;
 
     public Message(MessageType t)
     {
@@ -22,9 +25,17 @@ public class Message
     {
         type = MessageType.Teleport;
         this.y = y;
-        this.movX = movement.x;
-        this.movY = movement.y;
+        movX = movement.x;
+        movY = movement.y;
         this.d = d;
+    }
+
+    public Message(int r, int b, int g)
+    {
+        type = MessageType.Infection;
+        red = r;
+        blue = b;
+        green = g;
     }
 
     public Message()
@@ -54,6 +65,7 @@ public class Message
     {
         ConnectionAck,
         Message,
-        Teleport
+        Teleport,
+        Infection
     }
 }

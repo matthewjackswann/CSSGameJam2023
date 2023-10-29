@@ -16,11 +16,23 @@ public class Client : MonoBehaviour {
 
 	[SerializeReference] private TMP_InputField hostIPText;
 
+	[SerializeField] private int red = 1;
+	[SerializeField] private int blue = 1;
+	[SerializeField] private int green = 100;
+
 	private String hostIP;
 
 	private bool pendingConnection = false;
 	[SerializeField] private GameObject person;
 	private readonly List<Message> toSpawn = new();
+
+	public void Infection(int r, int g, int b)
+	{
+		red += r;
+		green += g;
+		blue += b;
+		SendMessage(new Message(r, b, g));
+	}
 
 	// Use this for initialization
 	public void TryConnect()
@@ -98,6 +110,11 @@ public class Client : MonoBehaviour {
 							break;
 						case Message.MessageType.Teleport:
 							toSpawn.Add(serverMessage);
+							break;
+						case Message.MessageType.Infection:
+							red += serverMessage.red;
+							blue += serverMessage.blue;
+							green += serverMessage.green;
 							break;
 					}
 
