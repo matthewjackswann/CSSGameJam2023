@@ -5,7 +5,9 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Host : MonoBehaviour {
 	/// <summary>
@@ -22,21 +24,27 @@ public class Host : MonoBehaviour {
 	/// </summary>
 	private TcpClient connectedTcpClient;
 
+	private string myIP = "error";
+
+	[SerializeReference] private TextMeshProUGUI ipDisplay;
+
 	// Use this for initialization
 	void Start () {
+		DontDestroyOnLoad(this);
 		// Start TcpServer background thread
+		foreach (var ipAddress in Dns.GetHostEntry(Dns.GetHostName()).AddressList)
+		{
+			if (ipAddress.AddressFamily == AddressFamily.InterNetwork)
+			{
+				myIP = ipAddress.ToString();
+			}
+		}
+		ipDisplay.text = myIP;
 		tcpListenerThread = new Thread (ListenForIncommingRequests)
 		{
 			IsBackground = true
 		};
 		tcpListenerThread.Start();
-	}
-
-	// Update is called once per frame
-	void Update () {
-		if (Input.GetKeyDown(KeyCode.Space)) {
-			SendMessage();
-		}
 	}
 
 	/// <summary>
@@ -45,7 +53,7 @@ public class Host : MonoBehaviour {
 	private void ListenForIncommingRequests () {
 		try {
 			// Create listener on localhost port 8052.
-			tcpListener = new TcpListener(IPAddress.Parse("127.0.0.1"), 8052);
+			tcpListener = new TcpListener(IPAddress.Parse(myIP), 8052);
 			tcpListener.Start();
 			Debug.Log("Server is listening");
 			byte[] bytes = new byte[1024];
@@ -61,6 +69,11 @@ public class Host : MonoBehaviour {
 							Array.Copy(bytes, 0, incomingData, 0, length);
 							// Convert byte array to string message.
 							Message clientMessage = Message.Deserialise(incomingData);
+							if (clientMessage.type == Message.MessageType.ConnectionAck)
+							{
+								SendMessage(new Message(Message.MessageType.ConnectionAck));
+								SceneManager.LoadScene("Scenes/HostGame", LoadSceneMode.Single);
+							}
 							Debug.Log("client message received as: " + clientMessage.data);
 						}
 					}
@@ -74,7 +87,7 @@ public class Host : MonoBehaviour {
 	/// <summary>
 	/// Send message to client using socket connection.
 	/// </summary>
-	private void SendMessage() {
+	private void SendMessage(Message m) {
 		if (connectedTcpClient == null) {
 			return;
 		}
@@ -84,7 +97,7 @@ public class Host : MonoBehaviour {
 			NetworkStream stream = connectedTcpClient.GetStream();
 			if (!stream.CanWrite) return;
 			// Convert string message to byte array.
-			byte[] serverMessage = new Message().Serialise();
+			byte[] serverMessage = m.Serialise();
 			// Write byte array to socketConnection stream.
 			stream.Write(serverMessage, 0, serverMessage.Length);
 			Debug.Log("Server sent his message - should be received by client");

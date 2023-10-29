@@ -11,6 +11,17 @@ public class Contaminate : MonoBehaviour
     private float timeLimit = 1000000000;
     public Disease disease = Disease.None;
     public float infectionProb = 0;
+    public List<float> resistanceProbs;
+    public List<float> infectorProbs;
+    public List<float> diseaseSpeeds;
+    public List<float> diseaseSizes;
+
+    public List<Disease> enums = new List<Disease>()
+    {
+        Disease.None, Disease.Blue, Disease.Red
+    };
+    
+    
     
     [SerializeReference] public Rigidbody2D rb;
 
@@ -55,35 +66,71 @@ public class Contaminate : MonoBehaviour
         {
             if (cont.disease == Disease.None)
             {
-                int probability = GetProbability();
+                float probability = GetProbability(disease, cont.disease);
                 // do nothing, the other person has not given you a disease.
             }
             else if (cont.disease == disease)
             {
-                int probability = GetProbability();
+                float probability = GetProbability(disease, cont.disease);
                 // do nothing, the other person has the same disease as you.
             }
             else
             {
-                int probability = GetProbability();
+                float probability = GetProbability(disease, cont.disease);                
                 if (probability > infectionProb)
                 {
                     disease = cont.disease;
                     UpdateColour();
-                    Points.Instance.AddPoints(1);
                 }
             }
-            
-            
         }
-        
-        
-        
-        return;
+    }
+    
+    void IncrementResistanceProbability(Disease incomingDisease)
+    {
+        int index = enums.IndexOf(incomingDisease);
+        resistanceProbs[index] += 0.1f;
     }
 
-    int GetProbability()
+    void IncrementInfectionProbability(Disease incomingDisease)
     {
-        return 1;
+        int index = enums.IndexOf(incomingDisease);
+        infectorProbs[index] += 0.1f;    }
+    void IncreaseSpeed(Disease incomingDisease)
+    {
+        int index = enums.IndexOf(incomingDisease);
+        float nspeed = diseaseSpeeds[index];
+        Contaminate[] arr = Object.FindObjectsOfType<Contaminate>();
+        for (int i = 0; i < arr.Length; i++)
+        {
+            if (arr[i].disease == incomingDisease)
+            {
+                arr[i].speed = nspeed;
+            }
+        }
+    }
+
+    void IncreaseSize(Disease incomingDisease)
+    {
+        int index = enums.IndexOf(incomingDisease);
+        float size = diseaseSizes[index];
+        Contaminate[] arr = Object.FindObjectsOfType<Contaminate>();
+        for (int i = 0; i < arr.Length; i++)
+        {
+            if (arr[i].disease == incomingDisease)
+            {
+                arr[i].rb.gameObject.transform.localScale *= size;
+            }
+        }
+    }
+
+    float GetProbability(Disease infector, Disease infectee)
+    {
+        int infectorIndex = enums.IndexOf(infector);
+        int infecteeIndex = enums.IndexOf(infectee);
+
+        float lim = infectorProbs[infectorIndex] - resistanceProbs[infecteeIndex];
+        
+        return Random.Range(lim,1);
     }
 }
