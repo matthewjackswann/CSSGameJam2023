@@ -25,6 +25,7 @@ public class Host : MonoBehaviour {
 	private TcpClient connectedTcpClient;
 
 	private string myIP = "error";
+	private bool connectionPending = false;
 
 	[SerializeReference] private TextMeshProUGUI ipDisplay;
 
@@ -45,6 +46,14 @@ public class Host : MonoBehaviour {
 			IsBackground = true
 		};
 		tcpListenerThread.Start();
+	}
+
+	private void Update()
+	{
+		if (!connectionPending) return;
+		connectionPending = false;
+		SendMessage(new Message(Message.MessageType.ConnectionAck));
+		SceneManager.LoadScene("Scenes/HostGame", LoadSceneMode.Single);
 	}
 
 	/// <summary>
@@ -71,8 +80,7 @@ public class Host : MonoBehaviour {
 							Message clientMessage = Message.Deserialise(incomingData);
 							if (clientMessage.type == Message.MessageType.ConnectionAck)
 							{
-								SendMessage(new Message(Message.MessageType.ConnectionAck));
-								SceneManager.LoadScene("Scenes/HostGame", LoadSceneMode.Single);
+								connectionPending = true;
 							}
 							Debug.Log("client message received as: " + clientMessage.data);
 						}
