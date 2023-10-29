@@ -20,6 +20,8 @@ public class Client : MonoBehaviour {
 	[SerializeField] private int blue = 1;
 	[SerializeField] private int green = 100;
 
+	[SerializeField] private int money = 0;
+
 	private String hostIP;
 
 	private bool pendingConnection = false;
@@ -28,6 +30,10 @@ public class Client : MonoBehaviour {
 
 	public void Infection(int r, int g, int b)
 	{
+		if (b > 0)
+		{
+			money += b;
+		}
 		red += r;
 		green += g;
 		blue += b;
@@ -112,6 +118,10 @@ public class Client : MonoBehaviour {
 							toSpawn.Add(serverMessage);
 							break;
 						case Message.MessageType.Infection:
+							if (serverMessage.blue > 0)
+							{
+								money += serverMessage.blue;
+							}
 							red += serverMessage.red;
 							blue += serverMessage.blue;
 							green += serverMessage.green;

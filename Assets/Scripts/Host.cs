@@ -37,8 +37,14 @@ public class Host : MonoBehaviour {
 	[SerializeField] private int blue = 1;
 	[SerializeField] private int green = 100;
 
+	[SerializeField] private int money = 0;
+
 	public void Infection(int r, int g, int b)
 	{
+		if (r > 0)
+		{
+			money += r;
+		}
 		red += r;
 		green += g;
 		blue += b;
@@ -121,6 +127,10 @@ public class Host : MonoBehaviour {
 									Debug.Log("New person");
 									break;
 								case Message.MessageType.Infection:
+									if (clientMessage.red > 0)
+									{
+										money += red;
+									}
 									red += clientMessage.red;
 									blue += clientMessage.blue;
 									green += clientMessage.green;
