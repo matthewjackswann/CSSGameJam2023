@@ -876,7 +876,7 @@ GameObject:
   - component: {fileID: 859206991}
   m_Layer: 0
   m_Name: Client
-  m_TagString: Untagged
+  m_TagString: Client
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -894,6 +894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hostIPText: {fileID: 1099144984}
+  person: {fileID: 4122350376954606958, guid: e89ffb51b28b92e498e418ccc3e72311, type: 3}
 --- !u!4 &859206992
 Transform:
   m_ObjectHideFlags: 0

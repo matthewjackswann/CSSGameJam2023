@@ -193,6 +193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -338,6 +339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -483,6 +485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -628,6 +631,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -906,6 +910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -1051,6 +1056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -1196,6 +1202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -1341,6 +1348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -1486,6 +1494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -1715,6 +1724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -1860,6 +1870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -2005,6 +2016,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -2150,6 +2162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -2295,6 +2308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -2440,6 +2454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -2718,6 +2733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -2863,6 +2879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -3008,6 +3025,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -3153,6 +3171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -3298,6 +3317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -3443,6 +3463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -3588,6 +3609,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -3733,6 +3755,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -3878,6 +3901,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -4023,6 +4047,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -4207,6 +4232,7 @@ GameObject:
   - component: {fileID: 1514847422}
   - component: {fileID: 1514847421}
   - component: {fileID: 1514847424}
+  - component: {fileID: 1514847425}
   m_Layer: 0
   m_Name: WallLeft
   m_TagString: Untagged
@@ -4221,10 +4247,10 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1514847420}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -4328,6 +4354,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1514847425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514847420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5f6ecdbde10d6248835e1ec1c37e322, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isHost: 0
 --- !u!1 &1556102662
 GameObject:
   m_ObjectHideFlags: 0
@@ -4398,6 +4437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -4543,6 +4583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -4688,6 +4729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -4833,6 +4875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -4978,6 +5021,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -5123,6 +5167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -5268,6 +5313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -5413,6 +5459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -5558,6 +5605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 2
   infectionProb: 0
   resistanceProbs: []
@@ -5703,6 +5751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -5848,6 +5897,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -5993,6 +6043,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -6138,6 +6189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -6416,6 +6468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -6561,6 +6614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []
@@ -6706,6 +6760,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
   infectionProb: 0
   resistanceProbs: []

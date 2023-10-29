@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class Contaminate : MonoBehaviour
 {
-    
+
     public float speed = 2.5f;
-    private Vector2 movement;
+    public Vector2 movement;
     private float timeLimit = 1000000000;
     public Disease disease = Disease.None;
     public float infectionProb = 0;
@@ -20,9 +20,9 @@ public class Contaminate : MonoBehaviour
     {
         Disease.None, Disease.Blue, Disease.Red
     };
-    
-    
-    
+
+
+
     [SerializeReference] public Rigidbody2D rb;
 
     void Start()
@@ -54,7 +54,7 @@ public class Contaminate : MonoBehaviour
             GetComponent<SpriteRenderer>().color = Color.red;
         }
     }
-    
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         // update movement vector
@@ -76,7 +76,7 @@ public class Contaminate : MonoBehaviour
             }
             else
             {
-                float probability = GetProbability(disease, cont.disease);                
+                float probability = GetProbability(disease, cont.disease);
                 if (probability > infectionProb)
                 {
                     disease = cont.disease;
@@ -85,7 +85,7 @@ public class Contaminate : MonoBehaviour
             }
         }
     }
-    
+
     void IncrementResistanceProbability(Disease incomingDisease)
     {
         int index = enums.IndexOf(incomingDisease);
@@ -131,7 +131,7 @@ public class Contaminate : MonoBehaviour
         int infecteeIndex = enums.IndexOf(infectee);
 
         float lim = infectorProbs[infectorIndex] - resistanceProbs[infecteeIndex];
-        
+
         return Random.Range(lim,1);
     }
 }

@@ -1,16 +1,30 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using UnityEngine;
 
 [Serializable]
 public class Message
 {
     public String data = "This is my message";
     public MessageType type;
+    public float y;
+    public float movX;
+    public float movY;
+    public Disease d;
 
     public Message(MessageType t)
     {
         type = t;
+    }
+
+    public Message(float y, Vector2 movement, Disease d)
+    {
+        type = MessageType.Teleport;
+        this.y = y;
+        this.movX = movement.x;
+        this.movY = movement.y;
+        this.d = d;
     }
 
     public Message()
@@ -39,6 +53,7 @@ public class Message
     public enum MessageType
     {
         ConnectionAck,
-        Message
+        Message,
+        Teleport
     }
 }

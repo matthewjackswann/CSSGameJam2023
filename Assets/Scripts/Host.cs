@@ -2,6 +2,7 @@
 // To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/
 // or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
@@ -29,6 +30,9 @@ public class Host : MonoBehaviour {
 
 	[SerializeReference] private TextMeshProUGUI ipDisplay;
 
+	[SerializeField] private GameObject person;
+	private readonly List<Message> toSpawn = new();
+
 	// Use this for initialization
 	void Start () {
 		DontDestroyOnLoad(this);
@@ -51,10 +55,25 @@ public class Host : MonoBehaviour {
 
 	private void Update()
 	{
-		if (!connectionPending) return;
-		connectionPending = false;
-		SendMessage(new Message(Message.MessageType.ConnectionAck));
-		SceneManager.LoadScene("Scenes/HostGame", LoadSceneMode.Single);
+		if (connectionPending)
+		{
+			connectionPending = false;
+			SendMessage(new Message(Message.MessageType.ConnectionAck));
+			SceneManager.LoadScene("Scenes/HostGame", LoadSceneMode.Single);
+		}
+
+		if (toSpawn.Count > 0)
+		{
+			foreach (Message p in toSpawn)
+			{
+				GameObject spawned = Instantiate(person);
+				Contaminate c = spawned.GetComponent<Contaminate>();
+				c.disease = p.d;
+				c.movement = new Vector2(p.movX, p.movY);
+				spawned.transform.position = new Vector3(50, p.y, -1);
+			}
+			toSpawn.Clear();
+		}
 	}
 
 	/// <summary>
@@ -63,7 +82,7 @@ public class Host : MonoBehaviour {
 	private void ListenForIncommingRequests () {
 		try {
 			// Create listener on localhost port 8052.
-			tcpListener = new TcpListener(IPAddress.Any, 8052);
+			tcpListener = new TcpListener(IPAddress.Any, 8053);
 			tcpListener.Start();
 			Debug.Log("Server is listening");
 			byte[] bytes = new byte[1024];
@@ -79,9 +98,14 @@ public class Host : MonoBehaviour {
 							Array.Copy(bytes, 0, incomingData, 0, length);
 							// Convert byte array to string message.
 							Message clientMessage = Message.Deserialise(incomingData);
-							if (clientMessage.type == Message.MessageType.ConnectionAck)
+							switch (clientMessage.type)
 							{
-								connectionPending = true;
+								case Message.MessageType.ConnectionAck:
+									connectionPending = true;
+									break;
+								case Message.MessageType.Teleport:
+									toSpawn.Add(clientMessage);
+									break;
 							}
 							Debug.Log("client message received as: " + clientMessage.data);
 						}
@@ -96,7 +120,7 @@ public class Host : MonoBehaviour {
 	/// <summary>
 	/// Send message to client using socket connection.
 	/// </summary>
-	private void SendMessage(Message m) {
+	public void SendMessage(Message m) {
 		if (connectedTcpClient == null) {
 			return;
 		}

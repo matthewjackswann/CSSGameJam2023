@@ -2,6 +2,7 @@
 // To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/
 // or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
@@ -18,6 +19,9 @@ public class Client : MonoBehaviour {
 	private String hostIP;
 
 	private bool pendingConnection = false;
+	[SerializeField] private GameObject person;
+	private readonly List<Message> toSpawn = new();
+
 	// Use this for initialization
 	public void TryConnect()
 	{
@@ -31,6 +35,19 @@ public class Client : MonoBehaviour {
 		pendingConnection = false;
 		DontDestroyOnLoad(this);
 		SceneManager.LoadScene("Scenes/ClientGame", LoadSceneMode.Single);
+
+		if (toSpawn.Count > 0)
+		{
+			foreach (Message p in toSpawn)
+			{
+				GameObject spawned = Instantiate(person);
+				Contaminate c = spawned.GetComponent<Contaminate>();
+				c.disease = p.d;
+				c.movement = new Vector2(p.movX, p.movY);
+				spawned.transform.position = new Vector3(-50, p.y, -1);
+			}
+			toSpawn.Clear();
+		}
 
 	}
 
@@ -56,9 +73,8 @@ public class Client : MonoBehaviour {
 	/// </summary>
 	private void ListenForData() {
 		try {
-			// socketConnection = new TcpClient(IPAddress.Parse(hostIP), 8052);
 			socketConnection = new TcpClient();
-			socketConnection.Connect(IPAddress.Parse(hostIP), 8052);
+			socketConnection.Connect(IPAddress.Parse(hostIP), 8053);
 			SendMessage(new Message(Message.MessageType.ConnectionAck));
 			byte[] bytes = new byte[1024];
 			while (true)
@@ -73,9 +89,14 @@ public class Client : MonoBehaviour {
 					// Convert byte array to string message.
 					Message serverMessage = Message.Deserialise(incomingData);
 
-					if (serverMessage.type == Message.MessageType.ConnectionAck)
+					switch (serverMessage.type)
 					{
-						pendingConnection = true;
+						case Message.MessageType.ConnectionAck:
+							pendingConnection = true;
+							break;
+						case Message.MessageType.Teleport:
+							toSpawn.Add(serverMessage);
+							break;
 					}
 
 					Debug.Log("server message received as: " + serverMessage.data);
@@ -89,7 +110,7 @@ public class Client : MonoBehaviour {
 	/// <summary>
 	/// Send message to server using socket connection.
 	/// </summary>
-	private void SendMessage(Message m) {
+	public void SendMessage(Message m) {
 		if (socketConnection == null) {
 			return;
 		}
