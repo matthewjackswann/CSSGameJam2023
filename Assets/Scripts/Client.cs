@@ -4,24 +4,21 @@
 using System;
 using System.Net.Sockets;
 using System.Threading;
-using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Client : MonoBehaviour {
 	private TcpClient socketConnection;
 	private Thread clientReceiveThread;
-
-	[SerializeReference] private TextMeshProUGUI hostIPText;
-
-	private String hostIP;
 	// Use this for initialization
-	public void TryConnect()
-	{
-		hostIP = hostIPText.text;
+	void Start () {
 		ConnectToTcpServer();
 	}
-
+	// Update is called once per frame
+	void Update () {
+		if (Input.GetKeyDown(KeyCode.Space)) {
+			SendMessage();
+		}
+	}
 	/// <summary>
 	/// Setup socket connection.
 	/// </summary>
@@ -32,7 +29,6 @@ public class Client : MonoBehaviour {
 				IsBackground = true
 			};
 			clientReceiveThread.Start();
-			SendMessage(new Message(Message.MessageType.ConnectionAck));
 		}
 		catch (Exception e) {
 			Debug.Log("On client connect exception " + e);
@@ -56,13 +52,6 @@ public class Client : MonoBehaviour {
 					Array.Copy(bytes, 0, incomingData, 0, length);
 					// Convert byte array to string message.
 					Message serverMessage = Message.Deserialise(incomingData);
-
-					if (serverMessage.type == Message.MessageType.ConnectionAck)
-					{
-						DontDestroyOnLoad(this);
-						SceneManager.LoadScene("Scenes/ClientGame", LoadSceneMode.Single);
-					}
-
 					Debug.Log("server message received as: " + serverMessage.data);
 				}
 			}
@@ -74,7 +63,7 @@ public class Client : MonoBehaviour {
 	/// <summary>
 	/// Send message to server using socket connection.
 	/// </summary>
-	private void SendMessage(Message m) {
+	private void SendMessage() {
 		if (socketConnection == null) {
 			return;
 		}
@@ -83,7 +72,7 @@ public class Client : MonoBehaviour {
 			NetworkStream stream = socketConnection.GetStream();
 			if (!stream.CanWrite) return;
 			// Convert string message to byte array.
-			byte[] clientMessageAsByteArray = m.Serialise();
+			byte[] clientMessageAsByteArray = new Message().Serialise();
 			// Write byte array to socketConnection stream
 			stream.Write(clientMessageAsByteArray, 0, clientMessageAsByteArray.Length);
 			Debug.Log("Client sent his message - should be received by server");

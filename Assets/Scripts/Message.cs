@@ -6,18 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class Message
 {
     public String data = "This is my message";
-    public MessageType type;
-
-    public Message(MessageType t)
-    {
-        type = t;
-    }
-
-    public Message()
-    {
-        type = MessageType.Message;
-    }
-
+    
     public byte[] Serialise()
     {
         var bf = new BinaryFormatter();
@@ -34,11 +23,5 @@ public class Message
         memStream.Seek(0, SeekOrigin.Begin);
         var obj = (Message)binForm.Deserialize(memStream);
         return obj;
-    }
-
-    public enum MessageType
-    {
-        ConnectionAck,
-        Message
     }
 }
