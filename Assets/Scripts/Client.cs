@@ -46,7 +46,7 @@ public class Client : MonoBehaviour {
 				Contaminate c = spawned.GetComponent<Contaminate>();
 				c.disease = p.d;
 				c.movement = new Vector2(p.movX, p.movY);
-				spawned.transform.position = new Vector3(-50, p.y, -1);
+				spawned.transform.position = new Vector3(-49, p.y, -1);
 			}
 			toSpawn.Clear();
 		}
