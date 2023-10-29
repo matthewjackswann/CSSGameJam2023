@@ -45,7 +45,6 @@ public class Client : MonoBehaviour {
 				IsBackground = true
 			};
 			clientReceiveThread.Start();
-			SendMessage(new Message(Message.MessageType.ConnectionAck));
 		}
 		catch (Exception e) {
 			Debug.Log("On client connect exception " + e);
@@ -60,6 +59,7 @@ public class Client : MonoBehaviour {
 			// socketConnection = new TcpClient(IPAddress.Parse(hostIP), 8052);
 			socketConnection = new TcpClient();
 			socketConnection.Connect(IPAddress.Parse(hostIP), 8052);
+			SendMessage(new Message(Message.MessageType.ConnectionAck));
 			byte[] bytes = new byte[1024];
 			while (true)
 			{
