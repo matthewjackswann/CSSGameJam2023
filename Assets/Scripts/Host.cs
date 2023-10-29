@@ -64,6 +64,7 @@ public class Host : MonoBehaviour {
 
 		if (toSpawn.Count > 0)
 		{
+			Debug.Log("To spawn: " + toSpawn.Count);
 			foreach (Message p in toSpawn)
 			{
 				GameObject spawned = Instantiate(person);
@@ -105,6 +106,7 @@ public class Host : MonoBehaviour {
 									break;
 								case Message.MessageType.Teleport:
 									toSpawn.Add(clientMessage);
+									Debug.Log("New person");
 									break;
 							}
 							Debug.Log("client message received as: " + clientMessage.data);
@@ -133,7 +135,6 @@ public class Host : MonoBehaviour {
 			byte[] serverMessage = m.Serialise();
 			// Write byte array to socketConnection stream.
 			stream.Write(serverMessage, 0, serverMessage.Length);
-			Debug.Log("Server sent his message - should be received by client");
 		}
 		catch (SocketException socketException) {
 			Debug.Log("Socket exception: " + socketException);

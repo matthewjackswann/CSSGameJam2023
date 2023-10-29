@@ -31,10 +31,12 @@ public class Client : MonoBehaviour {
 
 	private void Update()
 	{
-		if (!pendingConnection) return;
-		pendingConnection = false;
-		DontDestroyOnLoad(this);
-		SceneManager.LoadScene("Scenes/ClientGame", LoadSceneMode.Single);
+		if (pendingConnection)
+		{
+			pendingConnection = false;
+			DontDestroyOnLoad(this);
+			SceneManager.LoadScene("Scenes/ClientGame", LoadSceneMode.Single);
+		}
 
 		if (toSpawn.Count > 0)
 		{
