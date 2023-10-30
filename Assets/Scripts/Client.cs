@@ -128,7 +128,7 @@ public class Client : MonoBehaviour {
 			socketConnection = new TcpClient();
 			socketConnection.Connect(IPAddress.Parse(hostIP), 8053);
 			SendMessage(new Message(Message.MessageType.ConnectionAck));
-			byte[] bytes = new byte[1024];
+			byte[] bytes = new byte[2048];
 			while (true)
 			{
 				// Get a stream object for reading

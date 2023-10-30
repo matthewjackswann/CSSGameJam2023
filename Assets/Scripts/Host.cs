@@ -135,7 +135,7 @@ public class Host : MonoBehaviour {
 			tcpListener = new TcpListener(IPAddress.Any, 8053);
 			tcpListener.Start();
 			Debug.Log("Server is listening");
-			byte[] bytes = new byte[1024];
+			byte[] bytes = new byte[2048];
 			while (true) {
 				using (connectedTcpClient = tcpListener.AcceptTcpClient()) {
 					// Get a stream object for reading
