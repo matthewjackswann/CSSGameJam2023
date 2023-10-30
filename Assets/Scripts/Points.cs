@@ -5,16 +5,34 @@ using TMPro;
 
 public class Points : MonoBehaviour
 {
-    [SerializeField] private int points = 100;
     [SerializeField] private TextMeshProUGUI pointsText;
 
     public static Points Instance {get; private set;}
 
-    public int PointsAmount => points;
+    public int points {
+        get {
+            if (client != null) {
+                return client.money;
+            }
+            return host.money;
+        }
+        set {
+            if (client != null) {
+                client.money = value;
+                return;
+            }
+            host.money = value;
+        }
+    }
+
+    private Client client;
+    private Host host;
 
     private void Start()
     {
         Instance = this;
+        client = FindObjectOfType<Client>();
+        host = FindObjectOfType<Host>();
         pointsText.text = points.ToString();
     }
 
@@ -29,11 +47,5 @@ public class Points : MonoBehaviour
         }
 
         return false;
-    }
-
-    public void AddPoints(int amount)
-    {
-        points += amount;
-        pointsText.text = points.ToString();
     }
 }

@@ -39,7 +39,7 @@ public class Host : MonoBehaviour {
 	[SerializeField] public int green = 1000;
 
 
-	[SerializeField] private int money = 0;
+	[SerializeField] public int money = 0;
 	[SerializeReference] public SkillTreeRunner skilltree;
 
 

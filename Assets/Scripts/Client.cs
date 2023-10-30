@@ -20,7 +20,7 @@ public class Client : MonoBehaviour {
 	[SerializeField] public int blue = 1;
 	[SerializeField] public int green = 1000;
 
-	[SerializeField] private int money = 0;
+	[SerializeField] public int money = 0;
 	[SerializeReference] public SkillTreeRunner skilltree;
 
 
