@@ -32,7 +32,7 @@ public class ScoreBar : MonoBehaviour
         {
             red.fillAmount = Mathf.Lerp(red.fillAmount, _client.red /
                                                         ((_client.red + _client.green + _client.blue) * 1.0f), 0.7f);
-            blue.fillAmount = Mathf.Lerp(blue.fillAmount, ((_client.red + _client.green + _client.blue) * 1.0f), 0.7f);
+            blue.fillAmount = Mathf.Lerp(blue.fillAmount, _client.blue / ((_client.red + _client.green + _client.blue) * 1.0f), 0.7f);
         }
     }
 }
