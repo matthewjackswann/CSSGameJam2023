@@ -24,7 +24,7 @@ public class Contaminate : MonoBehaviour
     };
 
 
-
+    [SerializeReference] public SkillTreeRunner skillTree;
     [SerializeReference] public Rigidbody2D rb;
     [SerializeReference] private Client _client;
     [SerializeReference] private Host _host;
@@ -35,6 +35,7 @@ public class Contaminate : MonoBehaviour
     {
         _client = FindObjectOfType<Client>();
         _host = FindObjectOfType<Host>();
+        skillTree = FindObjectOfType<SkillTreeRunner>();
         movement = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
         mainCamera = Camera.main;
         UpdateColour();
@@ -167,52 +168,13 @@ public class Contaminate : MonoBehaviour
             }
         }
     }
-
-    void IncrementResistanceProbability(Disease incomingDisease)
-    {
-        int index = enums.IndexOf(incomingDisease);
-        resistanceProbs[index] += 0.1f;
-    }
-
-    void IncrementInfectionProbability(Disease incomingDisease)
-    {
-        int index = enums.IndexOf(incomingDisease);
-        infectorProbs[index] += 0.1f;    }
-    void IncreaseSpeed(Disease incomingDisease)
-    {
-        int index = enums.IndexOf(incomingDisease);
-        float nspeed = diseaseSpeeds[index];
-        Contaminate[] arr = Object.FindObjectsOfType<Contaminate>();
-        for (int i = 0; i < arr.Length; i++)
-        {
-            if (arr[i].disease == incomingDisease)
-            {
-                arr[i].speed = nspeed;
-            }
-        }
-    }
-
-    void IncreaseSize(Disease incomingDisease)
-    {
-        int index = enums.IndexOf(incomingDisease);
-        float size = diseaseSizes[index];
-        Contaminate[] arr = Object.FindObjectsOfType<Contaminate>();
-        for (int i = 0; i < arr.Length; i++)
-        {
-            if (arr[i].disease == incomingDisease)
-            {
-                arr[i].rb.gameObject.transform.localScale *= size;
-            }
-        }
-    }
-
     float GetProbability(Disease infector, Disease infectee)
     {
         return 1;
         int infectorIndex = enums.IndexOf(infector);
         int infecteeIndex = enums.IndexOf(infectee);
 
-        float lim = infectorProbs[infectorIndex] - resistanceProbs[infecteeIndex];
+        float lim = skillTree.infectorProbs[infectorIndex] - skillTree.resistanceProbs[infecteeIndex];
 
         return Random.Range(lim,1);
     }

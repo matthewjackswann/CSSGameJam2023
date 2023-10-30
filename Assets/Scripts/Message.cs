@@ -30,6 +30,13 @@ public class Message
         this.d = d;
     }
 
+    public Message(MessageType t, Disease disease)
+    {
+        type = t;
+        d = disease;
+
+    }
+
     public Message(int r, int b, int g)
     {
         type = MessageType.Infection;
@@ -66,6 +73,10 @@ public class Message
         ConnectionAck,
         Message,
         Teleport,
-        Infection
+        Infection,
+        IncrementInfection,
+        IncrementResistance,
+        IncrementSpeed,
+        IncrementSize
     }
 }

@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -36,9 +37,13 @@ public class Host : MonoBehaviour {
 	[SerializeField] public int red = 1;
 	[SerializeField] public int blue = 1;
 	[SerializeField] public int green = 100;
-
+	
+	
 	[SerializeField] private int money = 0;
+	[SerializeReference] private SkillTreeRunner skilltree;
 
+	
+	
 	public void Infection(int r, int g, int b)
 	{
 		if (r > 0)
@@ -50,6 +55,31 @@ public class Host : MonoBehaviour {
 		blue += b;
 		SendMessage(new Message(r, b, g));
 	}
+	
+	public void IncrementInfectionProbability(Disease incomingDisease)
+	{
+		skilltree.IncrementInfectionProbability(incomingDisease);
+		SendMessage(new Message(Message.MessageType.IncrementInfection, incomingDisease));
+	}
+
+	public void IncrementResistanceProbability(Disease incomingDisease)
+	{
+		skilltree.IncrementResistanceProbability(incomingDisease);
+		SendMessage(new Message(Message.MessageType.IncrementResistance, incomingDisease));
+	}
+
+	public void IncreaseSize(Disease incomingDisease)
+	{
+		skilltree.IncreaseSize(incomingDisease);
+		SendMessage(new Message(Message.MessageType.IncrementSize, incomingDisease));
+	}
+
+	public void IncreaseSpeed(Disease incomingDisease)
+	{
+		skilltree.IncreaseSpeed(incomingDisease);
+		SendMessage(new Message(Message.MessageType.IncrementSpeed, incomingDisease));
+	}
+	
 
 	// Use this for initialization
 	void Start () {
@@ -69,6 +99,7 @@ public class Host : MonoBehaviour {
 			IsBackground = true
 		};
 		tcpListenerThread.Start();
+		skilltree = FindObjectOfType<SkillTreeRunner>();
 	}
 
 	private void Update()
@@ -134,6 +165,18 @@ public class Host : MonoBehaviour {
 									red += clientMessage.red;
 									blue += clientMessage.blue;
 									green += clientMessage.green;
+									break;
+								case Message.MessageType.IncrementInfection:
+									skilltree.IncrementInfectionProbability(clientMessage.d);
+									break;
+								case Message.MessageType.IncrementResistance:
+									skilltree.IncrementResistanceProbability(clientMessage.d);
+									break;
+								case Message.MessageType.IncrementSize:
+									skilltree.IncreaseSize(clientMessage.d);
+									break;
+								case Message.MessageType.IncrementSpeed:
+									skilltree.IncreaseSpeed(clientMessage.d);
 									break;
 							}
 							Debug.Log("client message received as: " + clientMessage.data);

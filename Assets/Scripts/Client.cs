@@ -21,12 +21,19 @@ public class Client : MonoBehaviour {
 	[SerializeField] public int green = 100;
 
 	[SerializeField] private int money = 0;
+	[SerializeReference] private SkillTreeRunner skilltree;
+	
 
 	private String hostIP;
 
 	private bool pendingConnection = false;
 	[SerializeField] private GameObject person;
 	private readonly List<Message> toSpawn = new();
+
+	public void Start()
+	{
+		skilltree = FindObjectOfType<SkillTreeRunner>();
+	}
 
 	public void Infection(int r, int g, int b)
 	{
@@ -39,6 +46,31 @@ public class Client : MonoBehaviour {
 		blue += b;
 		SendMessage(new Message(r, b, g));
 	}
+
+	public void IncrementInfectionProbability(Disease incomingDisease)
+	{
+		skilltree.IncrementInfectionProbability(incomingDisease);
+		SendMessage(new Message(Message.MessageType.IncrementInfection, incomingDisease));
+	}
+
+	public void IncrementResistanceProbability(Disease incomingDisease)
+	{
+		skilltree.IncrementResistanceProbability(incomingDisease);
+		SendMessage(new Message(Message.MessageType.IncrementResistance, incomingDisease));
+	}
+
+	public void IncreaseSize(Disease incomingDisease)
+	{
+		skilltree.IncreaseSize(incomingDisease);
+		SendMessage(new Message(Message.MessageType.IncrementSize, incomingDisease));
+	}
+
+	public void IncreaseSpeed(Disease incomingDisease)
+	{
+		skilltree.IncreaseSpeed(incomingDisease);
+		SendMessage(new Message(Message.MessageType.IncrementSpeed, incomingDisease));
+	}
+
 
 	// Use this for initialization
 	public void TryConnect()
@@ -125,6 +157,18 @@ public class Client : MonoBehaviour {
 							red += serverMessage.red;
 							blue += serverMessage.blue;
 							green += serverMessage.green;
+							break;
+						case Message.MessageType.IncrementInfection:
+							skilltree.IncrementInfectionProbability(serverMessage.d);
+							break;
+						case Message.MessageType.IncrementResistance:
+							skilltree.IncrementResistanceProbability(serverMessage.d);
+							break;
+						case Message.MessageType.IncrementSize:
+							skilltree.IncreaseSize(serverMessage.d);
+							break;
+						case Message.MessageType.IncrementSpeed:
+							skilltree.IncreaseSpeed(serverMessage.d);
 							break;
 					}
 
