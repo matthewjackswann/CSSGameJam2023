@@ -346,10 +346,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d72e5dce90d54a5da6d20da9fa451b85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resistanceProbs: []
-  infectorProbs: []
-  diseaseSpeeds: []
-  diseaseSizes: []
+  resistanceProbs:
+  - 0.5
+  - 0.6
+  - 0.7
+  - 0.8
+  - 0.9
+  - 1
+  infectorProbs:
+  - 0.5
+  - 0.6
+  - 0.7
+  - 0.8
+  - 0.9
+  - 1
+  diseaseSpeeds:
+  - 2.5
+  - 3
+  - 3.5
+  - 4
+  - 4.5
+  - 50
+  - 200
+  diseaseSizes:
+  - 1
+  - 1.5
+  - 2
+  - 2.5
+  - 10
+  - 50
   enums: 000000000200000001000000
   _client: {fileID: 0}
   _host: {fileID: 0}
