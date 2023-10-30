@@ -1344,12 +1344,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2522502629677136690, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
       propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2522502629677136690, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
       propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7535197372410164659}
     - target: {fileID: 2522502629677136690, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
       propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2

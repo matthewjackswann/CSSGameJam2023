@@ -1635,10 +1635,6 @@ PrefabInstance:
       propertyPath: disease
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 6423817861275375643, guid: deadb1749e5524533a7e8bb529ddb6f0, type: 3}
-      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 7149548326118034299, guid: deadb1749e5524533a7e8bb529ddb6f0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
