@@ -94,13 +94,7 @@ public class SkillTreeRunner : MonoBehaviour
         float size = diseaseSizes[index];
         
         Contaminate[] arr = Object.FindObjectsOfType<Contaminate>();
-        for (int i = 0; i < arr.Length; i++)
-        {
-            if (arr[i].disease == incomingDisease)
-            {
-                arr[i].transform.localScale *= size;
-            }
-        }
+        
         if (_client != null)
             _client.IncreaseSize(incomingDisease);
             

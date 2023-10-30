@@ -148,7 +148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f7131787582a4407a4a93961f817437, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points: 100
   pointsText: {fileID: 6179832147878315264}
 --- !u!1 &6442283244102874630
 GameObject:
@@ -362,19 +361,19 @@ MonoBehaviour:
   - 1
   diseaseSpeeds:
   - 2.5
-  - 3
-  - 3.5
-  - 4
-  - 4.5
-  - 50
-  - 200
+  - 2.5
+  - 2.5
+  - 2.5
+  - 2.5
+  - 2.5
+  - 2.5
   diseaseSizes:
   - 1
-  - 1.5
-  - 2
-  - 2.5
-  - 10
-  - 50
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
   enums: 000000000200000001000000
   _client: {fileID: 0}
   _host: {fileID: 0}
