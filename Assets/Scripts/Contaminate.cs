@@ -1,7 +1,9 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using Object = UnityEngine.Object;
+using Random = UnityEngine.Random;
 
 public class Contaminate : MonoBehaviour
 {
@@ -27,17 +29,61 @@ public class Contaminate : MonoBehaviour
     [SerializeReference] private Client _client;
     [SerializeReference] private Host _host;
 
+    private Camera mainCamera;
+
     void Start()
     {
         _client = FindObjectOfType<Client>();
         _host = FindObjectOfType<Host>();
         movement = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+        mainCamera = Camera.main;
         UpdateColour();
     }
 
     void FixedUpdate()
     {
         rb.velocity = movement * speed;
+    }
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector3 worldPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            if ((transform.position.x - worldPosition.x) * (transform.position.x - worldPosition.x) +
+                (transform.position.y - worldPosition.y) * (transform.position.y - worldPosition.y) < 0.5)
+            {
+                if (_host != null)
+                {
+                    if (Disease.Red == disease) return;
+                    int r = 0;
+                    int g = 0;
+                    int b = 0;
+                    if (disease == Disease.None) g--;
+                    if (disease == Disease.Blue) b--;
+
+                    r++;
+                    _host.Infection(r, g, b);
+                    disease = Disease.Red;
+                    UpdateColour();
+                } else if (_client != null)
+                {
+                    if (Disease.Blue == disease) return;
+                    int r = 0;
+                    int g = 0;
+                    int b = 0;
+                    if (disease == Disease.Red) r--;
+                    if (disease == Disease.None) g--;
+
+                    b++;
+                    _client.Infection(r, g, b);
+                    disease = Disease.Blue;
+                    UpdateColour();
+                }
+            }
+        }
+
+
     }
 
     void UpdateColour()

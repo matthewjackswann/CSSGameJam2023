@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4122350376954606947}
   - component: {fileID: 4122350376954606944}
   - component: {fileID: 4122350376954606945}
+  - component: {fileID: 3952602919328519269}
   m_Layer: 0
   m_Name: Person
   m_TagString: Untagged
@@ -100,8 +101,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movement: {x: 0, y: 0}
   disease: 0
+  infectionProb: 0
+  resistanceProbs: []
+  infectorProbs: []
+  diseaseSpeeds: []
+  diseaseSizes: []
+  enums: 000000000200000001000000
   rb: {fileID: 4122350376954606944}
+  _client: {fileID: 0}
+  _host: {fileID: 0}
 --- !u!50 &4122350376954606944
 Rigidbody2D:
   serializedVersion: 4
@@ -139,3 +149,32 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &3952602919328519269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4122350376954606958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4122350376954606947}
+          m_TargetAssemblyTypeName: Contaminate, Assembly-CSharp
+          m_MethodName: OnPointerClick
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
