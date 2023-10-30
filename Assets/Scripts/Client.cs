@@ -22,7 +22,7 @@ public class Client : MonoBehaviour {
 
 	[SerializeField] private int money = 0;
 	[SerializeReference] private SkillTreeRunner skilltree;
-	
+
 
 	private String hostIP;
 
@@ -139,40 +139,44 @@ public class Client : MonoBehaviour {
 					var incomingData = new byte[length];
 					Array.Copy(bytes, 0, incomingData, 0, length);
 					// Convert byte array to string message.
-					Message serverMessage = Message.Deserialise(incomingData);
-
-					switch (serverMessage.type)
+					try
 					{
-						case Message.MessageType.ConnectionAck:
-							pendingConnection = true;
-							break;
-						case Message.MessageType.Teleport:
-							toSpawn.Add(serverMessage);
-							break;
-						case Message.MessageType.Infection:
-							if (serverMessage.blue > 0)
-							{
-								money += serverMessage.blue;
-							}
-							red += serverMessage.red;
-							blue += serverMessage.blue;
-							green += serverMessage.green;
-							break;
-						case Message.MessageType.IncrementInfection:
-							skilltree.IncrementInfectionProbability(serverMessage.d);
-							break;
-						case Message.MessageType.IncrementResistance:
-							skilltree.IncrementResistanceProbability(serverMessage.d);
-							break;
-						case Message.MessageType.IncrementSize:
-							skilltree.IncreaseSize(serverMessage.d);
-							break;
-						case Message.MessageType.IncrementSpeed:
-							skilltree.IncreaseSpeed(serverMessage.d);
-							break;
+						Message serverMessage = Message.Deserialise(incomingData);
+						switch (serverMessage.type)
+						{
+							case Message.MessageType.ConnectionAck:
+								pendingConnection = true;
+								break;
+							case Message.MessageType.Teleport:
+								toSpawn.Add(serverMessage);
+								break;
+							case Message.MessageType.Infection:
+								if (serverMessage.blue > 0)
+								{
+									money += serverMessage.blue;
+								}
+								red += serverMessage.red;
+								blue += serverMessage.blue;
+								green += serverMessage.green;
+								break;
+							case Message.MessageType.IncrementInfection:
+								skilltree.IncrementInfectionProbability(serverMessage.d);
+								break;
+							case Message.MessageType.IncrementResistance:
+								skilltree.IncrementResistanceProbability(serverMessage.d);
+								break;
+							case Message.MessageType.IncrementSize:
+								skilltree.IncreaseSize(serverMessage.d);
+								break;
+							case Message.MessageType.IncrementSpeed:
+								skilltree.IncreaseSpeed(serverMessage.d);
+								break;
+						}
 					}
-
-					Debug.Log("server message received as: " + serverMessage.data);
+					catch (Exception e)
+					{
+						Debug.Log(e);
+					}
 				}
 			}
 		}

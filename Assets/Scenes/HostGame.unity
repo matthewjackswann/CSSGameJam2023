@@ -301,8 +301,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 4122350376954606958, guid: e89ffb51b28b92e498e418ccc3e72311, type: 3}
   spawnBox:
-    m_Center: {x: -20, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 49, y: 49, z: 0}
   initialDisease: 1
   initialCount: 1
 --- !u!4 &423895405
@@ -569,9 +569,9 @@ MonoBehaviour:
   prefab: {fileID: 4122350376954606958, guid: e89ffb51b28b92e498e418ccc3e72311, type: 3}
   spawnBox:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 49, y: 49, z: 0}
   initialDisease: 0
-  initialCount: 35
+  initialCount: 500
 --- !u!4 &1153720169
 Transform:
   m_ObjectHideFlags: 0

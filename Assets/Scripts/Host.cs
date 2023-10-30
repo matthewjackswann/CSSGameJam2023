@@ -37,13 +37,13 @@ public class Host : MonoBehaviour {
 	[SerializeField] public int red = 1;
 	[SerializeField] public int blue = 1;
 	[SerializeField] public int green = 100;
-	
-	
+
+
 	[SerializeField] private int money = 0;
 	[SerializeReference] private SkillTreeRunner skilltree;
 
-	
-	
+
+
 	public void Infection(int r, int g, int b)
 	{
 		if (r > 0)
@@ -55,7 +55,7 @@ public class Host : MonoBehaviour {
 		blue += b;
 		SendMessage(new Message(r, b, g));
 	}
-	
+
 	public void IncrementInfectionProbability(Disease incomingDisease)
 	{
 		skilltree.IncrementInfectionProbability(incomingDisease);
@@ -79,7 +79,7 @@ public class Host : MonoBehaviour {
 		skilltree.IncreaseSpeed(incomingDisease);
 		SendMessage(new Message(Message.MessageType.IncrementSpeed, incomingDisease));
 	}
-	
+
 
 	// Use this for initialization
 	void Start () {
@@ -147,39 +147,45 @@ public class Host : MonoBehaviour {
 							var incomingData = new byte[length];
 							Array.Copy(bytes, 0, incomingData, 0, length);
 							// Convert byte array to string message.
-							Message clientMessage = Message.Deserialise(incomingData);
-							switch (clientMessage.type)
+							try
 							{
-								case Message.MessageType.ConnectionAck:
-									connectionPending = true;
-									break;
-								case Message.MessageType.Teleport:
-									toSpawn.Add(clientMessage);
-									Debug.Log("New person");
-									break;
-								case Message.MessageType.Infection:
-									if (clientMessage.red > 0)
-									{
-										money += red;
-									}
-									red += clientMessage.red;
-									blue += clientMessage.blue;
-									green += clientMessage.green;
-									break;
-								case Message.MessageType.IncrementInfection:
-									skilltree.IncrementInfectionProbability(clientMessage.d);
-									break;
-								case Message.MessageType.IncrementResistance:
-									skilltree.IncrementResistanceProbability(clientMessage.d);
-									break;
-								case Message.MessageType.IncrementSize:
-									skilltree.IncreaseSize(clientMessage.d);
-									break;
-								case Message.MessageType.IncrementSpeed:
-									skilltree.IncreaseSpeed(clientMessage.d);
-									break;
+								Message clientMessage = Message.Deserialise(incomingData);
+								switch (clientMessage.type)
+								{
+									case Message.MessageType.ConnectionAck:
+										connectionPending = true;
+										break;
+									case Message.MessageType.Teleport:
+										toSpawn.Add(clientMessage);
+										Debug.Log("New person");
+										break;
+									case Message.MessageType.Infection:
+										if (clientMessage.red > 0)
+										{
+											money += red;
+										}
+										red += clientMessage.red;
+										blue += clientMessage.blue;
+										green += clientMessage.green;
+										break;
+									case Message.MessageType.IncrementInfection:
+										skilltree.IncrementInfectionProbability(clientMessage.d);
+										break;
+									case Message.MessageType.IncrementResistance:
+										skilltree.IncrementResistanceProbability(clientMessage.d);
+										break;
+									case Message.MessageType.IncrementSize:
+										skilltree.IncreaseSize(clientMessage.d);
+										break;
+									case Message.MessageType.IncrementSpeed:
+										skilltree.IncreaseSpeed(clientMessage.d);
+										break;
+								}
 							}
-							Debug.Log("client message received as: " + clientMessage.data);
+							catch (Exception e)
+							{
+								Debug.Log(e);
+							}
 						}
 					}
 				}
