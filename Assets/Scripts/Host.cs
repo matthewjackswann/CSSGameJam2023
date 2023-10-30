@@ -111,18 +111,21 @@ public class Host : MonoBehaviour {
 			SceneManager.LoadScene("Scenes/HostGame", LoadSceneMode.Single);
 		}
 
-		if (toSpawn.Count > 0)
+		lock (toSpawn)
 		{
-			Debug.Log("To spawn: " + toSpawn.Count);
-			foreach (Message p in toSpawn)
+			if (toSpawn.Count > 0)
 			{
-				GameObject spawned = Instantiate(person);
-				Contaminate c = spawned.GetComponent<Contaminate>();
-				c.disease = p.d;
-				c.movement = new Vector2(p.movX, p.movY);
-				spawned.transform.position = new Vector3(49, p.y, -1);
+				Debug.Log("To spawn: " + toSpawn.Count);
+				foreach (Message p in toSpawn)
+				{
+					GameObject spawned = Instantiate(person);
+					Contaminate c = spawned.GetComponent<Contaminate>();
+					c.disease = p.d;
+					c.movement = new Vector2(p.movX, p.movY);
+					spawned.transform.position = new Vector3(49, p.y, -1);
+				}
+				toSpawn.Clear();
 			}
-			toSpawn.Clear();
 		}
 	}
 
@@ -156,7 +159,10 @@ public class Host : MonoBehaviour {
 										connectionPending = true;
 										break;
 									case Message.MessageType.Teleport:
-										toSpawn.Add(clientMessage);
+										lock (toSpawn)
+										{
+											toSpawn.Add(clientMessage);
+										}
 										Debug.Log("New person");
 										break;
 									case Message.MessageType.Infection:
