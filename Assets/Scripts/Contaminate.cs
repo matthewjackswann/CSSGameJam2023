@@ -144,10 +144,8 @@ public class Contaminate : MonoBehaviour
                 {
                     if (cont.disease == disease) return;
 
-                    // We play the infection particle effect
-                    this.GetComponent<ParticleSystem>().Stop();
-                    this.GetComponent<ParticleSystem>().Play();
-
+                    this.TriggerParticleSystem(cont.disease);
+                    
                     int r = 0;
                     int g = 0;
                     int b = 0;
@@ -178,4 +176,28 @@ public class Contaminate : MonoBehaviour
 
         return Random.Range(lim,1);
     }
+
+    void TriggerParticleSystem(Disease setToDisease)
+    {
+        // We play the infection particle effect
+        this.GetComponent<ParticleSystem>().Stop();
+        this.GetComponent<ParticleSystem>().Play();
+
+        ParticleSystem.MainModule particleSystemMain = this.GetComponent<ParticleSystem>().main; 
+        if (setToDisease == Disease.None)
+        {
+            // green
+            particleSystemMain.startColor = Color.green;
+        }
+        else if (setToDisease == Disease.Blue)
+        {
+            // blue
+            particleSystemMain.startColor = Color.blue;
+        }
+        else
+        {
+            // red
+            particleSystemMain.startColor = Color.red;
+        }        
+    } 
 }
