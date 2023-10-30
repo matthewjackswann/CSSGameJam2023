@@ -347,18 +347,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resistanceProbs:
   - 0.5
-  - 0.6
-  - 0.7
-  - 0.8
-  - 0.9
-  - 1
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
   infectorProbs:
   - 0.5
-  - 0.6
-  - 0.7
-  - 0.8
-  - 0.9
-  - 1
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
   diseaseSpeeds:
   - 2.5
   - 2.5
