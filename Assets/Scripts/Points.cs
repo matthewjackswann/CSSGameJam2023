@@ -36,6 +36,11 @@ public class Points : MonoBehaviour
         pointsText.text = points.ToString();
     }
 
+    private void Update()
+    {
+        pointsText.text = points.ToString();
+    }
+
 
     public bool TrySpend(int cost) 
     {
