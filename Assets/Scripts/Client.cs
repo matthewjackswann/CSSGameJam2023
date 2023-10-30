@@ -21,7 +21,7 @@ public class Client : MonoBehaviour {
 	[SerializeField] public int green = 1000;
 
 	[SerializeField] private int money = 0;
-	[SerializeReference] private SkillTreeRunner skilltree;
+	[SerializeReference] public SkillTreeRunner skilltree;
 
 
 	private String hostIP;

@@ -30,6 +30,14 @@ public class SkillTreeRunner : MonoBehaviour
     {
         _client = FindObjectOfType<Client>();
         _host = FindObjectOfType<Host>();
+        if (_host != null)
+            _host.skilltree = this;
+        else
+        {
+            _client.skilltree = this;
+        }
+       
+        
     }
 
     public void IncrementResistanceProbability(Disease incomingDisease)
