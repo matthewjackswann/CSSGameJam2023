@@ -896,8 +896,9 @@ MonoBehaviour:
   hostIPText: {fileID: 1099144984}
   red: 1
   blue: 1
-  green: 100
+  green: 1000
   money: 0
+  skilltree: {fileID: 0}
   person: {fileID: 4122350376954606958, guid: e89ffb51b28b92e498e418ccc3e72311, type: 3}
 --- !u!4 &859206992
 Transform:
