@@ -33,9 +33,9 @@ public class Host : MonoBehaviour {
 	[SerializeField] private GameObject person;
 	private readonly List<Message> toSpawn = new();
 
-	[SerializeField] private int red = 1;
-	[SerializeField] private int blue = 1;
-	[SerializeField] private int green = 100;
+	[SerializeField] public int red = 1;
+	[SerializeField] public int blue = 1;
+	[SerializeField] public int green = 100;
 
 	[SerializeField] private int money = 0;
 
