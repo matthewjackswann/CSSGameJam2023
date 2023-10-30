@@ -25,13 +25,14 @@ public class ScoreBar : MonoBehaviour
     {
         if (isHost)
         {
-            red.fillAmount = Mathf.Lerp(red.fillAmount, _host.red / (_host.red + _host.green + _host.blue), 0.7f);
-            blue.fillAmount = Mathf.Lerp(blue.fillAmount, _host.blue / (_host.red + _host.green + _host.blue), 0.7f);
+            red.fillAmount = Mathf.Lerp(red.fillAmount, _host.red / ((_host.red + _host.green + _host.blue) * 1.0f), 0.7f);
+            blue.fillAmount = Mathf.Lerp(blue.fillAmount, _host.blue / ((_host.red + _host.green + _host.blue) * 1.0f), 0.7f);
         }
         else
         {
-            red.fillAmount = Mathf.Lerp(red.fillAmount, _client.red / (_client.red + _client.green + _client.blue), 0.7f);
-            blue.fillAmount = Mathf.Lerp(blue.fillAmount, _client.blue / (_client.red + _client.green + _client.blue), 0.7f);
+            red.fillAmount = Mathf.Lerp(red.fillAmount, _client.red /
+                                                        ((_client.red + _client.green + _client.blue) * 1.0f), 0.7f);
+            blue.fillAmount = Mathf.Lerp(blue.fillAmount, ((_client.red + _client.green + _client.blue) * 1.0f), 0.7f);
         }
     }
 }
