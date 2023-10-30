@@ -8,7 +8,8 @@ public class SkillItem : MonoBehaviour
 {
     [SerializeField, Space] private Points points;
     [SerializeField] private TextMeshProUGUI levelText;
-    [SerializeField] private UnityEvent<int> onLevelUp;
+    [SerializeField] private UnityEvent<Disease> onLevelUp;
+    [SerializeField] private Disease disease;
     [SerializeField] private int cost = 10;
 
     public int Level => level;
@@ -20,7 +21,7 @@ public class SkillItem : MonoBehaviour
         {
             level++;
             levelText.text = level.ToString();
-            onLevelUp?.Invoke(level);
+            onLevelUp?.Invoke(disease);
         }
     }
 }

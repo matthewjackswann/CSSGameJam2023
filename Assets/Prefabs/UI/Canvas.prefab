@@ -186,11 +186,11 @@ RectTransform:
   m_Father: {fileID: 2184145041581099588}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 300}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 200, y: 300}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &5163383776862734161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,6 +230,7 @@ GameObject:
   - component: {fileID: 1419288307670988394}
   - component: {fileID: 7543180978724855173}
   - component: {fileID: 8072186250455054518}
+  - component: {fileID: 7535197372410164659}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -333,6 +334,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 6442283244102874630}
+--- !u!114 &7535197372410164659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8587901111890188850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d72e5dce90d54a5da6d20da9fa451b85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resistanceProbs: []
+  infectorProbs: []
+  diseaseSpeeds: []
+  diseaseSizes: []
+  enums: 000000000200000001000000
+  _client: {fileID: 0}
+  _host: {fileID: 0}
 --- !u!1001 &1963216735807589837
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -436,6 +456,34 @@ PrefabInstance:
       propertyPath: points
       value: 
       objectReference: {fileID: 6355760366800037745}
+    - target: {fileID: 2522502629677136690, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
+      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522502629677136690, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
+      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522502629677136690, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
+      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7535197372410164659}
+    - target: {fileID: 2522502629677136690, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
+      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522502629677136690, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
+      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: IncreaseSpeed
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522502629677136690, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
+      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SkillTreeRunner, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522502629677136690, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
+      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5591930501598412988, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -678,6 +726,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2385735368750512980, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
+      propertyPath: m_text
+      value: Infection
+      objectReference: {fileID: 0}
     - target: {fileID: 2452668552175039178, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
       propertyPath: m_Name
       value: Item (2)
@@ -690,6 +742,34 @@ PrefabInstance:
       propertyPath: points
       value: 
       objectReference: {fileID: 6355760366800037745}
+    - target: {fileID: 2522502629677136690, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
+      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522502629677136690, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
+      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522502629677136690, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
+      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7535197372410164659}
+    - target: {fileID: 2522502629677136690, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
+      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522502629677136690, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
+      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: IncrementInfectionProbability
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522502629677136690, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
+      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SkillTreeRunner, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522502629677136690, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
+      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5591930501598412988, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -932,6 +1012,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2385735368750512980, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
+      propertyPath: m_text
+      value: Resistance
+      objectReference: {fileID: 0}
     - target: {fileID: 2452668552175039178, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
       propertyPath: m_Name
       value: Item (3)
@@ -944,6 +1028,34 @@ PrefabInstance:
       propertyPath: points
       value: 
       objectReference: {fileID: 6355760366800037745}
+    - target: {fileID: 2522502629677136690, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
+      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522502629677136690, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
+      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522502629677136690, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
+      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7535197372410164659}
+    - target: {fileID: 2522502629677136690, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
+      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522502629677136690, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
+      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: IncrementResistanceProbability
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522502629677136690, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
+      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SkillTreeRunner, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522502629677136690, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
+      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5591930501598412988, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1186,6 +1298,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2385735368750512980, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
+      propertyPath: m_text
+      value: Size
+      objectReference: {fileID: 0}
     - target: {fileID: 2452668552175039178, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
       propertyPath: m_Name
       value: Item
@@ -1198,6 +1314,34 @@ PrefabInstance:
       propertyPath: points
       value: 
       objectReference: {fileID: 6355760366800037745}
+    - target: {fileID: 2522502629677136690, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
+      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522502629677136690, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
+      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522502629677136690, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
+      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522502629677136690, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
+      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522502629677136690, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
+      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: IncreaseSize
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522502629677136690, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
+      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SkillTreeRunner, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522502629677136690, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
+      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5591930501598412988, guid: 67dff7ae75ff140a691a949a7cfcbea8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
