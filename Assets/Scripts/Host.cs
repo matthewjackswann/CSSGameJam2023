@@ -58,25 +58,25 @@ public class Host : MonoBehaviour {
 
 	public void IncrementInfectionProbability(Disease incomingDisease)
 	{
-		skilltree.IncrementInfectionProbability(incomingDisease);
+		//skilltree.IncrementInfectionProbability(incomingDisease);
 		SendMessage(new Message(Message.MessageType.IncrementInfection, incomingDisease));
 	}
 
 	public void IncrementResistanceProbability(Disease incomingDisease)
 	{
-		skilltree.IncrementResistanceProbability(incomingDisease);
+		//skilltree.IncrementResistanceProbability(incomingDisease);
 		SendMessage(new Message(Message.MessageType.IncrementResistance, incomingDisease));
 	}
 
 	public void IncreaseSize(Disease incomingDisease)
 	{
-		skilltree.IncreaseSize(incomingDisease);
+		//skilltree.IncreaseSize(incomingDisease);
 		SendMessage(new Message(Message.MessageType.IncrementSize, incomingDisease));
 	}
 
 	public void IncreaseSpeed(Disease incomingDisease)
 	{
-		skilltree.IncreaseSpeed(incomingDisease);
+		//skilltree.IncreaseSpeed(incomingDisease);
 		SendMessage(new Message(Message.MessageType.IncrementSpeed, incomingDisease));
 	}
 

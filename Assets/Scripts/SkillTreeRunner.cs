@@ -90,7 +90,7 @@ public class SkillTreeRunner : MonoBehaviour
     public void IncreaseSize(Disease incomingDisease)
     {
         int index = enums.IndexOf(incomingDisease);
-        diseaseSizes[index] += 0.5f;
+        diseaseSizes[index] += 0.1f;
         float size = diseaseSizes[index];
         
         Contaminate[] arr = Object.FindObjectsOfType<Contaminate>();
@@ -138,7 +138,7 @@ public class SkillTreeRunner : MonoBehaviour
     public void IncreaseSize2(Disease incomingDisease)
     {
         int index = enums.IndexOf(incomingDisease);
-        diseaseSizes[index] += 0.5f;
+        diseaseSizes[index] += 0.1f;
         float size = diseaseSizes[index];
         
         Contaminate[] arr = Object.FindObjectsOfType<Contaminate>();
