@@ -137,6 +137,10 @@ public class Contaminate : MonoBehaviour
                 {
                     if (cont.disease == disease) return;
 
+                    // We play the infection particle effect
+                    this.GetComponent<ParticleSystem>().Stop();
+                    this.GetComponent<ParticleSystem>().Play();
+
                     int r = 0;
                     int g = 0;
                     int b = 0;
