@@ -18,7 +18,7 @@ public class Client : MonoBehaviour {
 
 	[SerializeField] public int red = 1;
 	[SerializeField] public int blue = 1;
-	[SerializeField] public int green = 100;
+	[SerializeField] public int green = 1000;
 
 	[SerializeField] private int money = 0;
 	[SerializeReference] private SkillTreeRunner skilltree;
