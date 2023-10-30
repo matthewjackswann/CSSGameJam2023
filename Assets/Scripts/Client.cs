@@ -49,25 +49,25 @@ public class Client : MonoBehaviour {
 
 	public void IncrementInfectionProbability(Disease incomingDisease)
 	{
-		skilltree.IncrementInfectionProbability(incomingDisease);
+		//skilltree.IncrementInfectionProbability(incomingDisease);
 		SendMessage(new Message(Message.MessageType.IncrementInfection, incomingDisease));
 	}
 
 	public void IncrementResistanceProbability(Disease incomingDisease)
 	{
-		skilltree.IncrementResistanceProbability(incomingDisease);
+		//skilltree.IncrementResistanceProbability(incomingDisease);
 		SendMessage(new Message(Message.MessageType.IncrementResistance, incomingDisease));
 	}
 
 	public void IncreaseSize(Disease incomingDisease)
 	{
-		skilltree.IncreaseSize(incomingDisease);
+		//skilltree.IncreaseSize(incomingDisease);
 		SendMessage(new Message(Message.MessageType.IncrementSize, incomingDisease));
 	}
 
 	public void IncreaseSpeed(Disease incomingDisease)
 	{
-		skilltree.IncreaseSpeed(incomingDisease);
+		//skilltree.IncreaseSpeed(incomingDisease);
 		SendMessage(new Message(Message.MessageType.IncrementSpeed, incomingDisease));
 	}
 
@@ -165,16 +165,16 @@ public class Client : MonoBehaviour {
 								green += serverMessage.green;
 								break;
 							case Message.MessageType.IncrementInfection:
-								skilltree.IncrementInfectionProbability(serverMessage.d);
+								skilltree.IncrementInfectionProbability2(serverMessage.d);
 								break;
 							case Message.MessageType.IncrementResistance:
-								skilltree.IncrementResistanceProbability(serverMessage.d);
+								skilltree.IncrementResistanceProbability2(serverMessage.d);
 								break;
 							case Message.MessageType.IncrementSize:
-								skilltree.IncreaseSize(serverMessage.d);
+								skilltree.IncreaseSize2(serverMessage.d);
 								break;
 							case Message.MessageType.IncrementSpeed:
-								skilltree.IncreaseSpeed(serverMessage.d);
+								skilltree.IncreaseSpeed2(serverMessage.d);
 								break;
 						}
 					}

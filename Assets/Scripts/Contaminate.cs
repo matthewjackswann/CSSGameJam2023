@@ -39,11 +39,15 @@ public class Contaminate : MonoBehaviour
         movement = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
         mainCamera = Camera.main;
         UpdateColour();
+
+        speed = skillTree.GetSpeed(disease);
+        transform.localScale = Vector3.one * skillTree.GetSize(disease);
     }
 
     void FixedUpdate()
     {
-        rb.velocity = movement * speed;
+        rb.velocity = skillTree.GetSpeed(disease) * movement;
+        transform.localScale = skillTree.GetSize(disease) * Vector3.one;
     }
 
     private void Update()

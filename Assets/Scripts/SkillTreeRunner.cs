@@ -66,7 +66,10 @@ public class SkillTreeRunner : MonoBehaviour
     public void IncreaseSpeed(Disease incomingDisease)
     {
         int index = enums.IndexOf(incomingDisease);
+        diseaseSpeeds[index] += 0.5f;
         float nspeed = diseaseSpeeds[index];
+        print(nspeed);
+
         Contaminate[] arr = Object.FindObjectsOfType<Contaminate>();
         for (int i = 0; i < arr.Length; i++)
         {
@@ -87,13 +90,15 @@ public class SkillTreeRunner : MonoBehaviour
     public void IncreaseSize(Disease incomingDisease)
     {
         int index = enums.IndexOf(incomingDisease);
+        diseaseSizes[index] += 0.5f;
         float size = diseaseSizes[index];
+        
         Contaminate[] arr = Object.FindObjectsOfType<Contaminate>();
         for (int i = 0; i < arr.Length; i++)
         {
             if (arr[i].disease == incomingDisease)
             {
-                arr[i].rb.gameObject.transform.localScale *= size;
+                arr[i].transform.localScale *= size;
             }
         }
         if (_client != null)
@@ -103,6 +108,64 @@ public class SkillTreeRunner : MonoBehaviour
             _host.IncreaseSize(incomingDisease);
     }
     
+    
+
+    public void IncrementResistanceProbability2(Disease incomingDisease)
+    {
+        int index = enums.IndexOf(incomingDisease);
+        resistanceProbs[index] += 0.1f;
+            
+    }
+
+    public void IncrementInfectionProbability2(Disease incomingDisease)
+    {
+        int index = enums.IndexOf(incomingDisease);
+        infectorProbs[index] += 0.1f;    
+    }
+    
+    public void IncreaseSpeed2(Disease incomingDisease)
+    {
+        int index = enums.IndexOf(incomingDisease);
+        diseaseSpeeds[index] += 0.5f;
+        float nspeed = diseaseSpeeds[index];
+        print(nspeed);
+
+        Contaminate[] arr = Object.FindObjectsOfType<Contaminate>();
+        for (int i = 0; i < arr.Length; i++)
+        {
+            if (arr[i].disease == incomingDisease)
+            {
+                arr[i].speed = nspeed;
+            }
+        }
+        
+    }
+
+    public void IncreaseSize2(Disease incomingDisease)
+    {
+        int index = enums.IndexOf(incomingDisease);
+        diseaseSizes[index] += 0.5f;
+        float size = diseaseSizes[index];
+        
+        Contaminate[] arr = Object.FindObjectsOfType<Contaminate>();
+        for (int i = 0; i < arr.Length; i++)
+        {
+            if (arr[i].disease == incomingDisease)
+            {
+                arr[i].transform.localScale = Vector3.one * size;
+            }
+        }
+    }
+
+    public float GetSpeed(Disease disease)
+    {
+        return diseaseSpeeds[enums.IndexOf(disease)];
+    }
+    
+    public float GetSize(Disease disease)
+    {
+        return diseaseSizes[enums.IndexOf(disease)];
+    }
 }
 
 //list goes - infection, resistance, speed, size

@@ -175,16 +175,16 @@ public class Host : MonoBehaviour {
 										green += clientMessage.green;
 										break;
 									case Message.MessageType.IncrementInfection:
-										skilltree.IncrementInfectionProbability(clientMessage.d);
+										skilltree.IncrementInfectionProbability2(clientMessage.d);
 										break;
 									case Message.MessageType.IncrementResistance:
-										skilltree.IncrementResistanceProbability(clientMessage.d);
+										skilltree.IncrementResistanceProbability2(clientMessage.d);
 										break;
 									case Message.MessageType.IncrementSize:
-										skilltree.IncreaseSize(clientMessage.d);
+										skilltree.IncreaseSize2(clientMessage.d);
 										break;
 									case Message.MessageType.IncrementSpeed:
-										skilltree.IncreaseSpeed(clientMessage.d);
+										skilltree.IncreaseSpeed2(clientMessage.d);
 										break;
 								}
 							}
